@@ -1,10 +1,10 @@
 package com.xadmin.SpringBootCrud.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.xadmin.SpringBootCrud.bean.Classes;
 
-public interface ClassesRepository extends CrudRepository<Classes,String> {
+public interface ClassesRepository extends JpaRepository<Classes, String>{
 	
 
 }
