@@ -14,23 +14,56 @@ public class FlightBookings {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String flightid;
-	private String sourceid;
-	private String destinationid;
-	private String customerid;
-	
-	
+	private String name;
+	private String address;
+	private String phone;
+	private String email;
+
 	public FlightBookings() {
-		
+
 	}
-	
-	public FlightBookings(Long id, String flightid, String sourceid, String destinationid, String customerid) {
-		super();
+
+	public FlightBookings(Long id, String flightid, String name, String address, String phone, String email) {
 		this.id = id;
 		this.flightid = flightid;
-		this.sourceid = sourceid;
-		this.destinationid = destinationid;
-		this.customerid = customerid;
+		this.name = name;
+		this.address = address;
+		this.phone = phone;
+		this.email = email;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -42,23 +75,5 @@ public class FlightBookings {
 	}
 	public void setFlightid(String flightid) {
 		this.flightid = flightid;
-	}
-	public String getSourceid() {
-		return sourceid;
-	}
-	public void setSourceid(String sourceid) {
-		this.sourceid = sourceid;
-	}
-	public String getDestinationid() {
-		return destinationid;
-	}
-	public void setDestinationid(String destinationid) {
-		this.destinationid = destinationid;
-	}
-	public String getCustomerid() {
-		return customerid;
-	}
-	public void setCustomerid(String customerid) {
-		this.customerid = customerid;
 	}
 }

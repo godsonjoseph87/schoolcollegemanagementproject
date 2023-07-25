@@ -1,6 +1,7 @@
 package com.flightbooking.TicketBooking.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,25 +19,25 @@ public class AirlineController {
 	private AirlineService airlineService;
 
 	@RequestMapping("/airlines")
-	public List<Airline> getAllAirliness()
+	public Map<String, Object> getAllAirliness()
 	{
 		return airlineService.getAllAirlines();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/airlines")
-	public void addClasses(@RequestBody Airline airline)
+	public Map<String, Object> addClasses(@RequestBody Airline airline)
 	{
-		airlineService.addAirline(airline);
+		return airlineService.addAirline(airline);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value="/airline/{id}")
-	public void updateAirline(@PathVariable String id, @RequestBody Airline airline)
+	public Map<String, Object> updateAirline(@PathVariable String id, @RequestBody Airline airline)
 	{
-		airlineService.updateAirline(id, airline);
+		return airlineService.updateAirline(id, airline);
 	}
 	@RequestMapping(method = RequestMethod.DELETE, value="/airline/{id}")
-	public void DeleteAirline(@PathVariable String id)
+	public Map<String, Object> DeleteAirline(@PathVariable String id)
 	{
-		airlineService.deleteAirline(id);
+		return airlineService.deleteAirline(id);
 	}
 }

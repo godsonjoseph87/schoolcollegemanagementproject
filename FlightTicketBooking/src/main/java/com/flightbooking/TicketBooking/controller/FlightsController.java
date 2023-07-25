@@ -1,6 +1,7 @@
 package com.flightbooking.TicketBooking.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,25 +19,37 @@ public class FlightsController {
 	private FlightsService flightsService;
 
 	@RequestMapping("/flights")
-	public List<Flights> getAllClasses()
+	public Map<String, Object> getAllClasses()
 	{
 		return flightsService.getAllFlights();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value="/flights")
-	public void addClasses(@RequestBody Flights classes)
+	public Map<String, Object> addClasses(@RequestBody Flights flights)
 	{
-		flightsService.addFlight(classes);
+		return flightsService.addFlight(flights);
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value="/completeflightdetails")
+	public Map<String, Object> completeFlightDetails()
+	{
+		return flightsService.completeFlightDetails();
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value="/searchflights/{sourceid}/{desid}/{date}/{noofpass}")
+	public Map<String, Object> searchFlightDetails(@PathVariable String sourceid, @PathVariable String desid, @PathVariable String date, @PathVariable String noofpass)
+	{
+		return flightsService.searchFlightDetails(sourceid, desid, date, noofpass);
 	}
 	
 	@RequestMapping(method = RequestMethod.PUT, value="/flight/{id}")
-	public void updateClasses(@PathVariable String id, @RequestBody Flights classes)
+	public Map<String, Object> updateFlight(@PathVariable String id, @RequestBody Flights classes)
 	{
-		flightsService.updateFlight(id, classes);
+		return flightsService.updateFlight(id, classes);
 	}
 	@RequestMapping(method = RequestMethod.DELETE, value="/flight/{id}")
-	public void DeleteClasses(@PathVariable String id)
+	public Map<String, Object> DeleteFlight(@PathVariable Long id)
 	{
-		flightsService.deleteFlight(id);
+		return flightsService.deleteFlight(id);
 	}
 }

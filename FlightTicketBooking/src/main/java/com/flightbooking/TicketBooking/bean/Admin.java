@@ -3,17 +3,18 @@ package com.flightbooking.TicketBooking.bean;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.lang.reflect.Field;
 
 @Entity
 @Table(name="admin")
 public class Admin {
 	
 	@Id
-	private String id = "1";
-	private String email = "admin@gmail.com";
-	private String username = "admin";
-	private String password = "admin";
-	private String name = "Admin";
+	private String id;
+	private String email;
+	private String username;
+	private String password;
+	private String name;
 	
 	public Admin() {
 		
@@ -26,6 +27,37 @@ public class Admin {
 		this.username = username;
 		this.password = password;
 		this.name = name;
+	}
+
+
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("{");
+		// Get the class of the object
+		Class<?> clazz = this.getClass();
+		// Get all declared fields of the class (including private fields)
+		Field[] fields = clazz.getDeclaredFields();
+		try {
+			for (Field field : fields) {
+				// Set the field accessible (even if it's private)
+				field.setAccessible(true);
+				// Get the name of the field
+				String fieldName = field.getName();
+				// Get the value of the field for the current instance
+				Object fieldValue = field.get(this);
+				// Append the field name and its value to the StringBuilder
+				sb.append("\"").append(fieldName).append("\":").append("\"").append(fieldValue).append("\",");
+			}
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		}
+		// Remove the trailing comma (if any) and close the JSON object
+		if (sb.length() > 1) {
+			sb.setLength(sb.length() - 1);
+		}
+		sb.append("}");
+		return sb.toString();
 	}
 	
 	

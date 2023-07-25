@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface AdminRepository extends JpaRepository<Admin, String>{
 
-    @Query(value="select id, name, email from admin where username=?1 and password=?2", nativeQuery = true)
+    @Query(value="select * from admin where username=?1 and password=?2", nativeQuery = true)
     public List<Admin> getAdminByUserNameAndPassword(String username, String password);
 }

@@ -1,5 +1,10 @@
 package com.flightbooking.TicketBooking.repository;
 
-public class PaymentRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.flightbooking.TicketBooking.bean.Payments;
+
+public interface PaymentRepository extends JpaRepository<Payments, String>{
+
 
 }

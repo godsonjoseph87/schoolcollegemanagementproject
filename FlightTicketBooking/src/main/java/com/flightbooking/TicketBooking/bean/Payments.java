@@ -16,7 +16,6 @@ public class Payments {
 	private String bookingid;
 	private String cardno;
 	private String cvv;
-	private String customerid;
 	private String expirydate;
 	
 	
@@ -26,13 +25,12 @@ public class Payments {
 	}
 	
 	
-	public Payments(Long id, String bookingid, String cardno, String cvv, String customerid, String expirydate) {
+	public Payments(Long id, String bookingid, String cardno, String cvv, String expirydate) {
 		super();
 		this.id = id;
 		this.bookingid = bookingid;
 		this.cardno = cardno;
 		this.cvv = cvv;
-		this.customerid = customerid;
 		this.expirydate = expirydate;
 	}
 	public Long getId() {
@@ -58,12 +56,6 @@ public class Payments {
 	}
 	public void setCvv(String cvv) {
 		this.cvv = cvv;
-	}
-	public String getCustomerid() {
-		return customerid;
-	}
-	public void setCustomerid(String customerid) {
-		this.customerid = customerid;
 	}
 	public String getExpirydate() {
 		return expirydate;
